@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Srihari &amp; Raksha | Wedding Invitation</title>
 <meta name="description" content="You are warmly invited to the wedding of Srihari and Raksha, Sunday 29 November 2026, Sardar Patel Bhavan, Bangalore.">
+<meta name="theme-color" content="#141a33">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:title" content="Srihari &amp; Raksha | Wedding Invitation">
 <meta property="og:description" content="You are warmly invited. Sunday, 29th November 2026, Sardar Patel Bhavan, Bangalore.">
 <link rel="preload" as="image" href="photos/palace.jpg" fetchpriority="high">
@@ -37,24 +41,33 @@
   :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
   /* ---------- Opening curtain ---------- */
-  .curtain { position: fixed; inset: 0; z-index: 100; display: flex; animation: curtain-gone 0s 2.6s forwards; }
-  .curtain i { flex: 1; background: linear-gradient(90deg, #5a0f26, #8a1d3d); position: relative; }
+  .curtain { position: fixed; inset: 0; z-index: 100; display: flex; animation: curtain-gone 0s 1.5s forwards; }
+  .curtain i { flex: 1; position: relative; background:
+    linear-gradient(90deg, rgba(0,0,0,.38), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,.38)),
+    repeating-linear-gradient(90deg, #6a1230 0, #93213f 22px, #6a1230 44px); }
   .curtain i::after { content: ""; position: absolute; top: 0; bottom: 0; width: 6px; background: var(--gold); }
-  .curtain i:first-child { animation: open-l 1.5s .9s cubic-bezier(.7,0,.2,1) forwards; }
-  .curtain i:first-child::after { right: 0; }
-  .curtain i:last-child { animation: open-r 1.5s .9s cubic-bezier(.7,0,.2,1) forwards; }
-  .curtain i:last-child::after { left: 0; }
-  .curtain b { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 20px; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.2rem; color: var(--gold-soft); text-align: center; animation: fade-out .5s .5s forwards; z-index: 2; }
-  .curtain b span { max-width: 22ch; line-height: 1.4; }
-  .curtain button { display: none; cursor: pointer; font: inherit; font-weight: 700; letter-spacing: .06em; padding: 14px 30px; border-radius: 999px; border: 2px solid var(--gold); background: var(--gold); color: #2a1a00; font-size: 1rem; }
-  .curtain button:hover { background: var(--gold-soft); }
+  .curtain .cl::after { right: 0; }
+  .curtain .cr::after { left: 0; }
+  .curtain .cl { animation: open-l 1.4s cubic-bezier(.65,0,.25,1) forwards; }
+  .curtain .cr { animation: open-r 1.4s cubic-bezier(.65,0,.25,1) forwards; }
+  .gate-wrap { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; padding: 20px; animation: fade-out .35s forwards; }
+  .gate { width: min(86vw, 320px); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 36px 22px 32px; border: 2px solid var(--gold); border-radius: 26px; background: #340716; box-shadow: 0 0 0 7px #340716, 0 0 0 8.5px var(--gold), 0 24px 60px rgba(0,0,0,.55); }
+  picture { display: contents; }
+  .gate { position: relative; margin-top: 78px; }
+  .gate-badge { width: 150px; height: 150px; margin: -120px 0 16px; border-radius: 50%; background: #fffaf0; border: 2px solid var(--gold); box-shadow: 0 0 0 6px #340716, 0 0 0 7.5px var(--gold), 0 12px 30px rgba(0,0,0,.45); display: grid; place-items: center; overflow: hidden; }
+  .gate-badge img { width: 94%; height: auto; }
+  @media (max-height: 560px) { .gate-badge { display: none; } .gate { margin-top: 0; } }
+  .gate-name { font-family: var(--serif); font-weight: 700; font-size: 1.9rem; line-height: 1.15; color: var(--gold-soft); }
+  .gate-sub { letter-spacing: .34em; text-transform: uppercase; font-size: .78rem; color: var(--gold); margin: 8px 0 24px; padding-left: .34em; }
+  .gate button { display: none; cursor: pointer; font: inherit; font-weight: 700; letter-spacing: .06em; padding: 14px 30px; border-radius: 999px; border: 2px solid var(--gold); background: var(--gold); color: #2a1a00; font-size: 1rem; }
+  .gate button:hover { background: var(--gold-soft); }
   @keyframes open-l { to { transform: translateX(-101%); } }
   @keyframes open-r { to { transform: translateX(101%); } }
   @keyframes fade-out { to { opacity: 0; } }
   @keyframes curtain-gone { to { visibility: hidden; } }
-  .js .curtain button { display: inline-block; }
-  .js .curtain, .js .curtain i, .js .curtain b, .js .rise { animation-play-state: paused; }
-  .js.opened .curtain, .js.opened .curtain i, .js.opened .curtain b, .js.opened .rise { animation-play-state: running; }
+  .js .gate button { display: inline-block; }
+  .js .curtain, .js .curtain i, .js .gate-wrap, .js .rise { animation-play-state: paused; }
+  .js.opened .curtain, .js.opened .curtain i, .js.opened .gate-wrap, .js.opened .rise { animation-play-state: running; }
   .js.opened .curtain { pointer-events: none; }
   html.js:not(.opened), html.js:not(.opened) body { overflow: hidden; }
 
@@ -78,8 +91,8 @@
   .hero-inner { position: relative; z-index: 2; max-width: 640px; }
   .rise { opacity: 0; transform: translateY(26px); animation: rise 1.1s cubic-bezier(.2,.7,.2,1) forwards; }
   @keyframes rise { to { opacity: 1; transform: none; } }
-  .d1 { animation-delay: 2.0s; } .d2 { animation-delay: 2.25s; } .d3 { animation-delay: 2.5s; }
-  .d4 { animation-delay: 2.75s; } .d5 { animation-delay: 3.0s; } .d6 { animation-delay: 3.25s; }
+  .d1 { animation-delay: .6s; } .d2 { animation-delay: .8s; } .d3 { animation-delay: 1.0s; }
+  .d4 { animation-delay: 1.2s; } .d5 { animation-delay: 1.4s; } .d6 { animation-delay: 1.6s; }
   .prasanna { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--gold-soft); text-shadow: 0 2px 14px rgba(0,0,0,.6); }
   .kicker { letter-spacing: .28em; text-transform: uppercase; font-size: .75rem; opacity: .9; }
   .names { font-family: var(--script); font-weight: 400; font-size: clamp(3.8rem, 16vw, 6.4rem); line-height: 1.05; margin-top: 4px; text-shadow: 0 4px 30px rgba(0,0,0,.65); }
@@ -132,6 +145,7 @@
   .family { font-size: .95rem; margin-top: 6px; }
   .orn { display: block; margin: 22px auto 0; width: 170px; height: 22px; color: var(--gold); }
   .clasp { display: block; width: 120px; height: auto; margin: 22px auto 0; }
+  .seal { display: block; width: 176px; height: auto; margin: 32px auto 0; }
   .on { font-family: var(--serif); font-size: 1.15rem; margin-top: 26px; }
   .venue-name { font-family: var(--serif); font-weight: 700; font-size: 1.55rem; color: var(--rose); line-height: 1.15; }
 
@@ -191,6 +205,7 @@
 
   /* Awaiting */
   .awaiting-sec { background: linear-gradient(180deg, color-mix(in srgb, var(--rose) 10%, var(--paper)), var(--paper)); }
+  .family-photo { border-radius: 18px; border: 1px solid color-mix(in srgb, var(--gold) 60%, transparent); box-shadow: 0 18px 40px -22px rgba(20,26,51,.7); margin: 0 auto 24px; max-width: 560px; }
   .awaiting { list-style: none; display: grid; gap: 12px; grid-template-columns: 1fr 1fr; max-width: 560px; margin: 0 auto; }
   .awaiting li { text-align: center; padding: 16px 12px; border: 1px solid color-mix(in srgb, var(--rose) 40%, transparent); border-radius: 12px; font-weight: 700; font-size: .95rem; background: var(--card); }
   @media (max-width: 440px) { .awaiting { grid-template-columns: 1fr; } }
@@ -199,10 +214,13 @@
   .share { text-align: center; }
   .share p { max-width: 40ch; margin: 0 auto; }
   footer { background: var(--ink); color: #f6ecd6; text-align: center; padding: 56px 20px calc(56px + env(safe-area-inset-bottom, 0px)); }
+  .foot-badge { width: 150px; height: 150px; margin: 0 auto 24px; border-radius: 50%; background: #fffaf0; border: 2px solid var(--gold); box-shadow: 0 0 0 6px var(--ink), 0 0 0 7.5px var(--gold); display: grid; place-items: center; overflow: hidden; }
+  .foot-badge img { width: 94%; height: auto; }
   footer .names-f { font-family: var(--script); font-weight: 400; font-size: 3rem; color: var(--gold-soft); }
   footer small { display: block; opacity: .75; margin-top: 6px; }
 
   /* Music button */
+  .music[hidden] { display: none; }
   .music { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 60; width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--gold); background: color-mix(in srgb, var(--ink) 88%, transparent); backdrop-filter: blur(8px); color: var(--gold-soft); display: grid; place-items: center; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .6s, transform .2s; }
   .opened .music { opacity: .88; pointer-events: auto; }
   .music:hover { transform: scale(1.06); }
@@ -212,13 +230,6 @@
   .music.on { animation: pulse 2.4s infinite; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(214,164,50,.5); } 70% { box-shadow: 0 0 0 12px rgba(214,164,50,0); } 100% { box-shadow: 0 0 0 0 rgba(214,164,50,0); } }
 
-
-  /* YouTube mini player (YouTube requires the player to stay visible, min 200x200) */
-  .ytcard { position: fixed; right: 12px; top: calc(64px + env(safe-area-inset-top, 0px)); z-index: 61; width: 200px; height: 200px; opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity .5s, transform .5s; }
-  .ytcard.show { opacity: 1; pointer-events: auto; transform: none; }
-  .ytframe { width: 100%; height: 100%; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--gold); background: #000; box-shadow: 0 12px 30px -10px rgba(0,0,0,.6); }
-  .ytframe iframe { width: 100%; height: 100%; display: block; border: 0; }
-  .ytclose { position: absolute; top: -10px; right: -10px; width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--gold); background: var(--ink); color: var(--gold-soft); font-size: 16px; line-height: 1; cursor: pointer; display: grid; place-items: center; z-index: 2; }
 
   /* Lightbox */
   .lb { position: fixed; inset: 0; z-index: 200; background: rgba(2,2,6,.985); display: flex; align-items: center; justify-content: center; }
@@ -239,7 +250,6 @@
     .rise { animation: none; opacity: 1; transform: none; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
     .photo img, .photo:hover img { transition: none; transform: none; }
-    .ytcard { transition: none; }
   }
 </style>
 </head>
@@ -247,8 +257,15 @@
 <script>document.documentElement.classList.add("js");</script>
 
 <div class="curtain">
-  <i></i><i></i>
-  <b><span>|| Sri Lakshmi Venkateshwara Swamy Prasanna ||</span><button type="button" id="open">Open invitation</button></b>
+  <i class="cl"></i><i class="cr"></i>
+  <div class="gate-wrap">
+    <div class="gate">
+      <div class="gate-badge"><picture><source srcset="art/monogram.webp" type="image/webp"><img src="art/monogram.png" width="640" height="640" alt="Monogram of S and R: United by Love" fetchpriority="high"></picture></div>
+      <p class="gate-name">Vankadari Family</p>
+      <p class="gate-sub">Invitation</p>
+      <button type="button" id="open">Open invitation</button>
+    </div>
+  </div>
 </div>
 
 <nav aria-label="Sections">
@@ -316,6 +333,8 @@
       <p class="on">On Sunday, 29th November 2026 at</p>
       <p class="venue-name">&ldquo;Sardar Patel Bhavan&rdquo;</p>
       <p class="addr"># 161, Thimmaiah Road, Cantonment Railway Station Road, Kaverappa Layout, Vasanthanagar, Bangalore</p>
+
+      <picture><source srcset="art/monogram.webp" type="image/webp"><img class="seal" src="art/monogram.png" width="640" height="640" alt="" loading="lazy" decoding="async"></picture>
     </div>
   </div>
 </section>
@@ -419,6 +438,9 @@
   <div class="wrap">
     <p class="eyebrow reveal">Awaiting your gracious presence</p>
     <h2 class="title reveal">With love, from our family</h2>
+    <button type="button" class="photo family-photo reveal" data-lb data-alt="Seven family members smiling together for a group photo, dressed in festive sarees and traditional outfits" aria-label="Open photo full screen">
+      <img src="photos/family.jpg" width="2576" height="1718" loading="lazy" decoding="async" alt="Seven family members smiling together for a group photo, dressed in festive sarees and traditional outfits">
+    </button>
     <ul class="awaiting">
       <li class="reveal">Smt. Suman &amp; Sri V. Sathish</li>
       <li class="reveal">Dr. Vinutha &amp; Sri V. Sridhar</li>
@@ -438,6 +460,7 @@
 </section>
 
 <footer>
+  <div class="foot-badge"><picture><source srcset="art/monogram.webp" type="image/webp"><img src="art/monogram.png" width="640" height="640" alt="" loading="lazy" decoding="async"></picture></div>
   <p class="names-f">Srihari &amp; Raksha</p>
   <small>29th November 2026 &middot; Bangalore</small>
 </footer>
@@ -450,13 +473,8 @@
   <p class="lb-count" id="lb-count" aria-live="polite"></p>
 </div>
 
-<div class="ytcard" id="ytcard" aria-label="Background music player">
-  <button type="button" class="ytclose" id="ytclose" aria-label="Close music player">&times;</button>
-  <div class="ytframe"><div id="yt"></div></div>
-</div>
-
-<audio id="bgm" src="music.mp3" loop preload="none"></audio>
-<button class="music" id="music" type="button" aria-label="Play music" aria-pressed="false">
+<audio id="bgm" src="music.mp3" loop preload="metadata"></audio>
+<button class="music" id="music" type="button" aria-label="Play music" aria-pressed="false" hidden>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>
     <path class="slash" d="M3 3l18 18"/>
@@ -502,64 +520,26 @@
   } else { items.forEach(i => i.classList.add("in")); }
 
   // Tap to open + background music
-  // Music source: a YouTube video id. Leave it as "" to use music.mp3 instead.
-  const YT_ID = "DYcBV9OoAag";
-  const root = document.documentElement, audio = el("bgm"), mbtn = el("music"), card = el("ytcard");
-  let musicOn = false, resumeAfterHide = false, yt = null, ytReady = false, pending = false;
-
+  // To enable music, put a file named music.mp3 next to index.html.
+  const root = document.documentElement, audio = el("bgm"), mbtn = el("music");
+  let musicOn = false, resumeAfterHide = false;
   function setUI(on) {
     musicOn = on;
     mbtn.classList.toggle("on", on);
     mbtn.setAttribute("aria-pressed", String(on));
     mbtn.setAttribute("aria-label", on ? "Pause music" : "Play music");
   }
-  function noMusic() { mbtn.hidden = true; card.classList.remove("show"); }
   function fadeIn() {
     let v = 0; audio.volume = 0;
     const t = setInterval(() => { v = Math.min(0.5, v + 0.025); audio.volume = v; if (v >= 0.5) clearInterval(t); }, 100);
   }
-  function startMusic() {
-    if (YT_ID) {
-      card.classList.add("show");
-      if (ytReady) yt.playVideo(); else pending = true;
-      return;
-    }
-    audio.play().then(() => { fadeIn(); setUI(true); }).catch(() => setUI(false));
-  }
-  function pauseMusic() {
-    if (YT_ID) { pending = false; if (ytReady) yt.pauseVideo(); }
-    else audio.pause();
-    setUI(false);
-  }
-  if (YT_ID) {
-    const sc = document.createElement("script");
-    sc.src = "https://www.youtube.com/iframe_api";
-    sc.onerror = noMusic;
-    document.head.appendChild(sc);
-    window.onYouTubeIframeAPIReady = () => {
-      yt = new YT.Player("yt", {
-        width: 200, height: 200, videoId: YT_ID,
-        playerVars: { playsinline: 1, rel: 0, modestbranding: 1, loop: 1, playlist: YT_ID },
-        events: {
-          onReady: () => { ytReady = true; yt.setVolume(60); if (pending) { pending = false; yt.playVideo(); } },
-          onStateChange: e => {
-            if (e.data === 1) setUI(true);
-            else if (e.data === 2) setUI(false);
-            else if (e.data === 0) yt.playVideo();
-          },
-          onError: noMusic
-        }
-      });
-    };
-    el("ytclose").addEventListener("click", () => { pauseMusic(); card.classList.remove("show"); });
-  } else {
-    audio.addEventListener("error", noMusic);
-  }
+  function startMusic() { audio.play().then(() => { fadeIn(); setUI(true); }).catch(() => setUI(false)); }
+  function pauseMusic() { audio.pause(); setUI(false); }
+  audio.addEventListener("loadedmetadata", () => { mbtn.hidden = false; });
+  audio.addEventListener("error", () => { mbtn.hidden = true; });
   el("open").addEventListener("click", () => { root.classList.add("opened"); startMusic(); });
   if (reduce) root.classList.add("opened");
-  mbtn.addEventListener("click", () => {
-    if (musicOn || pending) pauseMusic(); else startMusic();
-  });
+  mbtn.addEventListener("click", () => { if (audio.paused) startMusic(); else pauseMusic(); });
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) { resumeAfterHide = musicOn; if (musicOn) pauseMusic(); }
     else if (resumeAfterHide) { startMusic(); resumeAfterHide = false; }
